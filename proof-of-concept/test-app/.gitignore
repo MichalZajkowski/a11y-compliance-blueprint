@@ -1,0 +1,15 @@
+# Gradle
+.gradle/
+build/
+
+# Captures and generated files
+captures/
+.externalNativeBuild/
+.cxx/
+*.aab
+*.apk
+output-metadata.json
+
+# Keystore files
+*.jks
+*.keystore

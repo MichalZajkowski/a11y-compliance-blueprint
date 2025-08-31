@@ -26,6 +26,12 @@ The system uses a simple, powerful methodology:
 
 This project is currently in the **proposal stage** for the NGI Mobifree fund. The technical architecture and roadmap have been defined.
 
+## 🔬 Proof of Concept
+
+To validate the core technical approach, a functional Proof of Concept (PoC) has been developed. It consists of a minimal Android "test app" and a corresponding Appium test suite that successfully queries the OS accessibility API.
+
+For technical details and instructions on how to run the PoC locally, please see the **[proof-of-concept/README.md](proof-of-concept/README.md)**.
+
 ## 🗺️ Roadmap
 
 - **Phase 1: Core Testing Framework.** Develop the core Appium/Kotlin test suite and the standardized Android test application.
