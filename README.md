@@ -34,9 +34,12 @@ For technical details and instructions on how to run the PoC locally, please see
 
 ## 🗺️ Roadmap
 
-- **Phase 1: Core Testing Framework.** Develop the core Appium/Kotlin test suite and the standardized Android test application.
-- **Phase 2: CI Automation & Dashboard.** Implement the GitHub Actions workflow for automated testing and create the public-facing dashboard.
-- **Phase 3: Blueprint & Dissemination.** Create comprehensive documentation ("the Blueprint") and engage with open-source communities to promote adoption.
+The project is structured into four key Work Packages (WPs), as outlined in the official grant proposal:
+
+1.  **[WP1] Core Testing Framework & Test App:** Develop the core Appium/Kotlin test suite and the standardized Android "measuring stick" application.
+2.  **[WP2] CI Automation & Public Dashboard:** Implement the GitHub Actions workflow for automated testing and create the public-facing compliance dashboard.
+3.  **[WP3] The "Blueprint-in-a-Box":** Create comprehensive documentation and tutorials to allow any third-party developer to easily replicate the testing setup.
+4.  **[WP4] Project Management & Dissemination:** Handle project reporting and conduct proactive outreach to the open-source mobile OS communities.
 
 ## 🙌 How to Contribute
 
