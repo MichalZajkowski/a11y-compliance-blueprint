@@ -1,49 +1,42 @@
-# The A11y-Compliance Blueprint 🏗️
+# Open A11y Guard
+### (formerly "The A11y-Compliance Blueprint")
 
-An open-source testing framework and compliance dashboard for validating foundational accessibility APIs in alternative mobile operating systems. This project is proposed for funding by the NGI Mobifree fund.
+> **Current Status:** 🚧 **Phase 1: Proof of Concept** (Proposal for NGI Mobifree Fund)
+> **Focus:** CI-Native Accessibility Automation for Sovereign OS
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![NGI Zero](https://img.shields.io/badge/Grant-NGI_Mobifree_Candidate-blue)](https://nlnet.nl/)
+
+## 🚀 The Mission
+**Open A11y Guard** is an open-source initiative to eliminate the "accessibility blind spot" in the alternative mobile ecosystem.
+
+While proprietary platforms have massive QA resources, sovereign Operating Systems (GrapheneOS, /e/OS, LineageOS, Plasma Mobile) often lack the automated tooling to verify **WCAG** & **European Accessibility Act (EAA)** compliance at the System UI level.
+
+**This project aims to solve that by providing a "Drop-in" CI Container that acts as a headless accessibility auditor.**
 
 ---
 
-## The Problem: An Accessibility Blind Spot in the Open Mobile Ecosystem
+## 🏗️ Architecture & Vision (Roadmap)
 
-The movement towards an open, sovereign mobile ecosystem is vital for a human-centric internet. However, emerging platforms like GrapheneOS, /e/OS, and others often lack the resources for dedicated accessibility quality assurance. This creates a critical risk: without a reliable way to validate their foundational Accessibility APIs, these platforms may inadvertently exclude users with disabilities, undermining the goal of creating a truly inclusive alternative.
+We are moving away from local, manual Appium scripts towards a fully containerized, CI-agnostic solution.
 
-## The Solution: A Public Benchmark for Accessibility
+### The Problem
+Traditional mobile testing requires complex setups (Android Studio, Emulators, Appium Servers) that are hard to maintain in lightweight CI environments like GitLab CI or Woodpecker.
 
-**The A11y-Compliance Blueprint** is an automated testing system that acts as a public "quality lab" for mobile OS accessibility. It provides two key public goods:
+### The Solution: "Container-First" Approach
+The goal of the NGI-funded phase (Phase 2) is to deliver a **Portable Accessibility Compliance Container (PACC)**.
 
-1.  **A Public Compliance Dashboard:** A simple, clear website that tracks and displays the accessibility compliance of major open-source mobile OSes, creating transparency and a healthy incentive for improvement.
-2.  **A "Blueprint-in-a-Box":** The entire testing system is provided as an open-source, replicable template that any OS developer can use to test their own builds and fix issues before they are released.
+* **🐳 Dockerized Runner:** No external dependencies. Just `docker run open-a11y-guard`.
+* **🔗 CI-Agnostic:** Designed to run on **GitLab CI** (/e/OS), **Woodpecker** (Codeberg), **Jenkins**, and **GitHub Actions**.
+* **🤖 Zero-Touch:** Automatically boots a headless Android environment, runs the audit against the Accessibility API, and shuts down.
+* **📊 Standardized Reporting:** Outputs JUnit XML and HTML reports ready for compliance dashboards.
 
-## How It Works
-
-The system uses a simple, powerful methodology:
-- **A Standardized Test App:** A simple, consistent Android application is used as a "measuring stick."
-- **Automated OS-Level Testing:** An Appium-based test suite runs against the test app, but it queries the **Operating System's Accessibility API** to check if the OS correctly interprets the app's accessibility features.
-- **Continuous Reporting:** Tests are run automatically via GitHub Actions, and the results are published to the public dashboard, providing a continuous, up-to-date benchmark.
-
-## 🚦 Project Status
-
-This project is currently in the **proposal stage** for the NGI Mobifree fund. The technical architecture and roadmap have been defined.
-
-## 🔬 Proof of Concept
-
-To validate the core technical approach, a functional Proof of Concept (PoC) has been developed. It consists of a minimal Android "test app" and a corresponding Appium test suite that successfully queries the OS accessibility API.
-
-For technical details and instructions on how to run the PoC locally, please see the **[proof-of-concept/README.md](proof-of-concept/README.md)**.
-
-## 🗺️ Roadmap
-
-- **Phase 1: Core Testing Framework.** Develop the core Appium/Kotlin test suite and the standardized Android test application.
-- **Phase 2: CI Automation & Dashboard.** Implement the GitHub Actions workflow for automated testing and create the public-facing dashboard.
-- **Phase 3: Blueprint & Dissemination.** Create comprehensive documentation ("the Blueprint") and engage with open-source communities to promote adoption.
-
-## 🙌 How to Contribute
-
-This project is intended to be an open-source public good. At this early stage, the best way to contribute is by providing feedback or expressing interest. Please open an issue to start a discussion.
-
-For more details, see our **[CONTRIBUTING.md](CONTRIBUTING.md)** file.
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
+```mermaid
+graph LR
+    A[OS Build Pipeline] -->|Triggers| B(Open A11y Guard Container)
+    B -->|Spins up| C[Headless Android / Emulator]
+    B -->|Injects| D[A11y Inspector Engine]
+    D -->|Queries| E[OS Accessibility API]
+    E -->|Returns| D
+    D -->|Generates| F[Compliance Report]
+    F -->|Pass/Fail| A
