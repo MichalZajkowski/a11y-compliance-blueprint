@@ -7,7 +7,7 @@ LABEL maintainer="Michał Zajkowski"
 
 ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 ENV ANDROID_HOME="/root/android-sdk"
-ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
+ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:/app/node_modules/.bin"
 
 # 1. Install System Dependencies
 RUN apt-get update && apt-get install -y \
@@ -16,11 +16,18 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. Install Appium & Drivers
+# 2. Install Appium & Drivers (globally, for system-wide access)
 RUN npm install -g appium \
     && appium driver install uiautomator2
 
 WORKDIR /app
 
-# 3. Entrypoint
-CMD ["echo", "Open A11y Guard Container Ready. Run with specific scan arguments."]
+# 3. Copy Application Files & Install Dependencies
+COPY package.json ./
+COPY src/ ./src/
+RUN npm install
+
+# 4. Entrypoint
+# This default command runs the mock scan. In a real CI scenario,
+# this would be overridden by specific arguments like in docker-compose.yml.
+CMD ["npm", "run", "scan:system-ui"]

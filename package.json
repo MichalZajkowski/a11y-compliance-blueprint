@@ -1,0 +1,14 @@
+{
+  "name": "open-a11y-guard",
+  "version": "0.1.0",
+  "description": "A containerized accessibility auditor for sovereign mobile OS.",
+  "bin": {
+    "a11y-guard": "./src/cli.js"
+  },
+  "scripts": {
+    "scan:system-ui": "node src/cli.js --target system-ui"
+  },
+  "dependencies": {
+    "appium": "^2.0.0"
+  }
+}
