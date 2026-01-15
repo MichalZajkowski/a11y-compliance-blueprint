@@ -18,7 +18,8 @@ While proprietary platforms have massive QA resources, sovereign Operating Syste
 
 ## 🏗️ Architecture & Vision (Roadmap)
 
-We are moving away from local, manual Appium scripts towards a fully containerized, CI-agnostic solution.
+**Current Status:** The repository currently contains a functional Proof of Concept (PoC) running on local emulators.
+**Target Architecture (Milestone 1 Goal):** The transition to a fully dockerized "Zero-Touch" environment is the primary objective of the proposed funding phase.
 
 ### The Problem
 Traditional mobile testing requires complex setups (Android Studio, Emulators, Appium Servers) that are hard to maintain in lightweight CI environments like GitLab CI or Woodpecker.
