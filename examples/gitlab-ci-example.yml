@@ -1,0 +1,15 @@
+# Example GitLab CI configuration for /e/OS integration
+stages:
+  - accessibility-audit
+
+audit-system-ui:
+  stage: accessibility-audit
+  image: ghcr.io/michalzajkowski/open-a11y-guard:latest
+  services:
+    - docker:dind
+  script:
+    - a11y-guard scan --target system-ui --output ./a11y-report.xml
+  artifacts:
+    reports:
+      junit: a11y-report.xml
+  allow_failure: true

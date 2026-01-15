@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  a11y-guard:
+    build: .
+    container_name: open-a11y-guard
+    volumes:
+      - ./reports:/app/reports
+    environment:
+      - TARGET_OS_IP=host.docker.internal
+      - REPORT_FORMAT=junit
+    command: ["npm", "run", "scan:system-ui"]
