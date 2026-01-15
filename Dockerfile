@@ -26,6 +26,7 @@ WORKDIR /app
 COPY package.json ./
 COPY src/ ./src/
 RUN npm install
+RUN npm link
 
 # 4. Entrypoint
 # This default command runs the mock scan. In a real CI scenario,
