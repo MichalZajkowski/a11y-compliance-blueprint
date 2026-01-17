@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2025 Michał Zajkowski
+ */
 
 console.log("Open A11y Guard CLI");
 

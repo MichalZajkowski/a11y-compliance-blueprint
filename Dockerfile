@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2025 Michał Zajkowski
+
 # Open A11y Guard - Architecture Blueprint
 FROM node:20-bullseye-slim
 
