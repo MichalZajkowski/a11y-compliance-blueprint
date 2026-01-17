@@ -19,7 +19,7 @@ class AccessibilityApiTest {
 
     @Before
     fun setUp() {
-        val targetDevice = System.getenv("ANDROID_DEVICE_NAME") ?: "Pixel_6_API_33"
+        val targetDevice = System.getenv("ANDROID_DEVICE_NAME") ?: "Pixel_6_API_36"
         val appiumHost = System.getenv("APPIUM_HOST") ?: "127.0.0.1"
         val appiumPort = System.getenv("APPIUM_PORT") ?: "4723"
 

@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.appium:java-client:8.5.1")
+    testImplementation("io.appium:java-client:9.0.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
